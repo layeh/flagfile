@@ -288,6 +288,10 @@ type Error struct {
 	Err error
 }
 
+func (e *Error) Unwrap() error {
+	return e.Err
+}
+
 func (e *Error) Error() string {
 	var b bytes.Buffer
 	b.WriteString(`flagfile: parsing error`)
